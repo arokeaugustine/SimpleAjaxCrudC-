@@ -4,14 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-sm btn-success ml-1">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                
+            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Code)
             </th>
@@ -30,15 +33,16 @@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
+            <td>
+                <img src="@item.ImageUrl" height="30px">
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Code)
             </td>
@@ -57,13 +61,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
+            
             <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                <div class="btn-group">
+                    <a asp-action="Edit" asp-route-id="@item.Code" class="btn btn-sm btn-info">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Code" class="btn btn-sm btn-primary ml-2 mr-2"> Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Code" class="btn btn-sm btn-danger"> Delete</a>
+                </div>
+               @* @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
             </td>
         </tr>
 }

@@ -1,12 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CodeSimpleCrud.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CodeSimpleCrud.Data
 {
-    public class CodeSimplecontext:DbContext
+    public class CodeSimpleContext:DbContext
     {
-        public CodeSimplecontext(DbContextOptions<CodeSimplecontext> options):base(options)
+        public CodeSimpleContext(DbContextOptions<CodeSimpleContext> options):base(options)
         {
             
         }
+
+        public virtual DbSet<Product> Products { get; set; }
     }
 }
